@@ -1,0 +1,30 @@
+Arturo Rault,u01184520,u01184520@ufb.edu,35,0.9
+Camala Dewareu00676717u00676717@ufb.edu551.2
+Clayton Hubbocks,u01470057,u01470057@ufb.com,32,1.3
+Clayton Hubbocks,u01954059,u01954059@ufb.edu,34,0.5
+Dennis Ruzek,u00867426,u00867426@ufb.edu,240,3.1
+Di,u00983625,u00983625@ufb.edu,51,3.8
+Florie,u01196684,u01196684,67,3.3
+Galven Gowar,p00581119,u00581119@ufb.edu,39,2.5
+
+Ignacio Hosburn,u00667531,u00667531@ufb.edu,20,2.7
+Ilyse Voules,u00161572,u0016572@ufb.edu,71,2.7
+Ewell,u00055877,u00055877@ufb.edu,81,1.2
+Jefferson Barrott,u01104839,u01104839@ufb.edu,360.9
+Joelle Walhedd,u01487108,u01487108@ufb.edu,44,3.8
+Kathlin Whysall,u01901486,u01901486@ufb.edu,34,5.5
+Kellia Conen,u0147262,u01477262@ufb.edu,41,1.8
+Lucila Jellico,u01290807,u01290807@ufb.edu,999,3.8
+Maddie Thundercliffe,u01954059,n01954059@ufb.edu,34,0.5
+
+Rickert Going,u00573297,u00573297@ufb.edu,86,2.5
+Rosalinda Chipping,u00666517,u00666517@unf.edu,25,2.1
+Samson Hotton,u0043294,u00403294@ufb.edu,39,2.9
+Shayla Allaker,u01472058,u01472058@ufb.edu,119,2.3
+
+Tabor Jecock,n00973742,u00973742@ufb.edu,51,2.1
+Tallie,Bussey,u01771457,u01771457@ufb.edu,79,2.7
+Tallie Snoday,u01840560,u01840560@ufb.edu,19,9.9
+Tobiah Pettican,u01256749,u0125649@ufb.edu,41,1.1
+
+Violet Brindley,u00543868,u00543868@ufb.edu,28,1.7
