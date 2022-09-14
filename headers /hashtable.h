@@ -8,7 +8,7 @@
 #define TABLE_SIZE 35
 
 struct student {
-
+    struct student* next = nullptr;
     std::string name;
     std::string number;
     std::string email;
@@ -35,6 +35,20 @@ void displayRecord(struct student temp,int num) {
     if(empty){
         std::cout << std::setw(5) << std::right << "-" << std::endl;
     } else{ std::cout << "  " << temp.gpa << std::endl; }
+
+    struct student* pt = temp.next;
+    while(pt!=nullptr){
+        bool ptempty = (pt->name.empty());
+        std::cout << std::setw(5) << std::right << "|"
+                  << "  " << std::setw(20) << std::left << (ptempty? "-":pt->name)
+                  << "  " << std::setw(9) << std::left << (ptempty? "-":pt->number)
+                  << "  " << std::setw(17) << std::left << (ptempty? "-":pt->email)
+                  << "  " << std::setw(7) << std::right << (ptempty? "-":std::to_string(pt->credits));
+        if(pt->name.empty()){
+            std::cout << std::setw(5) << std::right << "-" << std::endl;
+        } else{ std::cout << "  " << pt->gpa << std::endl; }
+        pt = pt->next;
+    }
 }
 void displayHashTable(struct student hashTable[]) {
     std::cout << "\n"
@@ -46,21 +60,26 @@ void displayHashTable(struct student hashTable[]) {
     }
 }
 void insertStudent(struct student hashTable[], struct student* temp) {
-    int expectedHash = computerHash(temp->name);
-    for(int i = expectedHash;i<(TABLE_SIZE*2);i++){
-        int realHash = ((i>TABLE_SIZE-1) ? i-TABLE_SIZE : i);
-        if(hashTable[realHash].name.empty()){
-            hashTable[realHash]=*temp;
-
-            std::cout << std::left << std::setw(14) << "Expected: "+std::to_string(expectedHash)+","
-            << std::left << std::setw(14) << std::left << "Actual: "+std::to_string(realHash) << std::right
-            << std::setw(25) << "Added Student to Table: \""+temp->name+"\"" << std::endl;
-
-            //As long as there is space for the element, we will always have a place for it.
-            return;
-        }
+    int expectedHash = computerHash(temp->name), linkNumber=1;
+    struct student* pt = &hashTable[expectedHash];
+    if(hashTable[expectedHash].name.empty()){
+        hashTable[expectedHash]=*temp;
+        std::cout << std::left << std::setw(28) << "Hash: "+std::to_string(expectedHash)
+                  << std::right << std::setw(25) << "Added Student to Table: \""+temp->name+"\""
+                  << std::endl;
+        return;
     }
-    //If we reach here, then there is no available spot for the element, throw error.
+    else {
+        while(pt->next!=nullptr) {
+            linkNumber++;
+            pt = pt->next;
+        }
+        pt->next=temp;
+    }
+    std::cout << std::left << std::setw(10) << "Hash: "+std::to_string(expectedHash)
+              << std::left << std::setw(18) << ((linkNumber==0) ? "" : "Link #:"+std::to_string(linkNumber))
+              << std::right << std::setw(31) << "Added Student to Table: \""+temp->name+"\""
+              << std::endl;
 }
 bool testNumberFormat(struct student temp) {
     if (temp.number.size() != NUMBER_SIZE) { displayError(numberLength, temp.number,temp.parsedAtLine); return false; }
