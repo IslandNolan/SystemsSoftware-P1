@@ -54,6 +54,7 @@ void processInputFile(struct student hashTable[], string filename) {
         } else { continue; }
     }
     displayHashTable(hashTable);
+    cout << "-----------------------------------------------------------------------" << endl;
 }
 void processSearchFile(struct student hashTable[], string filename) {
     cout << endl << "Do Search Stuff Here" << endl;
