@@ -15,6 +15,7 @@ struct student {
     int credits;
     double gpa;
     int parsedAtLine;
+    bool isChained = false;
 };
 
 int computerHash(std::string input) {
@@ -24,31 +25,29 @@ int computerHash(std::string input) {
     }
     return sum%TABLE_SIZE;
 }
-void displayRecord(struct student temp,int num) {
-    std::string index=std::to_string(num)+".",name=temp.name,number=temp.number,email=temp.email,credits=std::to_string(temp.credits);
-    bool empty = (temp.name.empty());
-    std::cout << std::setw(5) << std::right << index
-    << "  " << std::setw(20) << std::left << (empty? "-":name)
-    << "  " << std::setw(9) << std::left << (empty? "-":number)
-    << "  " << std::setw(17) << std::left << (empty? "-":email)
-    << "  " << std::setw(7) << std::right << (empty? "-":credits);
-    if(empty){
+void printRecord(struct student temp,int index){
+
+    bool emptyRecord = temp.name.empty();
+    std::cout << std::setw(5) << std::right << ((temp.isChained) ? "|" : std::to_string(index))
+              << "  " << std::setw(20) << std::left << (emptyRecord? "-":temp.name)
+              << "  " << std::setw(9) << std::left << (emptyRecord? "-":temp.number)
+              << "  " << std::setw(17) << std::left << (emptyRecord? "-":temp.email)
+              << "  " << std::setw(7) << std::right << (emptyRecord? "-":std::to_string(temp.credits));
+    if(emptyRecord){
         std::cout << std::setw(5) << std::right << "-" << std::endl;
     } else{ std::cout << "  " << temp.gpa << std::endl; }
 
+}
+void displayRecord(struct student temp,int num) {
+
+    printRecord(temp,num);
+
     struct student* pt = temp.next;
     while(pt!=nullptr){
-        bool ptempty = (pt->name.empty());
-        std::cout << std::setw(5) << std::right << "|"
-                  << "  " << std::setw(20) << std::left << (ptempty? "-":pt->name)
-                  << "  " << std::setw(9) << std::left << (ptempty? "-":pt->number)
-                  << "  " << std::setw(17) << std::left << (ptempty? "-":pt->email)
-                  << "  " << std::setw(7) << std::right << (ptempty? "-":std::to_string(pt->credits));
-        if(pt->name.empty()){
-            std::cout << std::setw(5) << std::right << "-" << std::endl;
-        } else{ std::cout << "  " << pt->gpa << std::endl; }
+        printRecord(*pt,num);
         pt = pt->next;
     }
+
 }
 void displayHashTable(struct student hashTable[]) {
     std::cout << "\n"
@@ -75,6 +74,7 @@ void insertStudent(struct student hashTable[], struct student* temp) {
             pt = pt->next;
         }
         pt->next=temp;
+        temp->isChained=true;
     }
     std::cout << std::left << std::setw(10) << "Hash: "+std::to_string(expectedHash)
               << std::left << std::setw(18) << ((linkNumber==0) ? "" : "Link #:"+std::to_string(linkNumber))

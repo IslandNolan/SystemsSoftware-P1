@@ -40,10 +40,8 @@ void processInputFile(struct student hashTable[], string filename) {
     while(getline(iss,s)){
         lineNum++;
 
-        //Test the Record Here instead of separate method.
+        //Test Record for Carriage Returns if running on Unix.
         if(!WIN && s.find('\r')!=string::npos) { displayError(carriageReturn,"",lineNum); exit(0); }
-
-
         if(s.size()>=3 && s.size()<35) { displayError(shortRecord,s,lineNum); continue; }
         if(s.empty()) { displayError(blankRecord,"",lineNum); continue; }
         if(std::count(s.begin(),s.end(),',')!=4) { displayError(corruptRecord,s,lineNum); continue; }

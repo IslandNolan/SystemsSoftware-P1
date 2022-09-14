@@ -4,65 +4,65 @@
 #include <iomanip>
 
 enum error{
-    missingArgs=1,
-    fileNotFound=2,
-    blankRecord=3,
-    corruptRecord=4,
-    shortRecord=5,
-    duplicateName=6,
-    nameLength=7,
-    numberLength=8,
-    emailLength=9,
-    emailFormat=10,
-    creditsValue=11,
-    gpaValue=12,
-    carriageReturn=13,
-    numberFormat=14
+    missingArgs,
+    fileNotFound,
+    blankRecord,
+    corruptRecord,
+    shortRecord,
+    duplicateName,
+    nameLength,
+    numberLength,
+    emailLength,
+    emailFormat,
+    creditsValue,
+    gpaValue,
+    carriageReturn,
+    numberFormat
 };
 void displayError(int error, std::string content, int lineNumber){
     std::string err = "Error: (Line: "+std::to_string(lineNumber)+")  ";
     std::cout << std::left << std::setw(28) << err;
 	switch(error){
-        case 1:
+        case missingArgs:
             std::cout << content << std::endl;
             break;
-        case 2:
+        case fileNotFound:
             break;
-        case 3:
+        case blankRecord:
             std::cout << "Blank Record: ( --- )" << std::endl;
             break;
-        case 4:
+        case corruptRecord:
             std::cout << "Corrupt Record: (" << content << ")" << std::endl;
             break;
-        case 5:
+        case shortRecord:
             std::cout << "Short Record: (" << content << ")" << std::endl;
             break;
-        case 6:
+        case duplicateName:
             std::cout << "Duplicate Name: (" << content << ")" << std::endl;
             break;
-        case 7:
+        case nameLength:
             std::cout << "Name Length: (" << content << ")" << std::endl;
             break;
-        case 8:
+        case numberLength:
             std::cout << "Number Length: (" << content << ")" << std::endl;
             break;
-        case 9:
+        case emailLength:
             std::cout << "Email Length: (" << content << ")" << std::endl;
             break;
-        case 10:
+        case emailFormat:
             std::cout << "Email Format: (" << content << ")" << std::endl;
             break;
-        case 11:
+        case creditsValue:
             std::cout << "Student Credit is greater than max Allowed: (" << content << ")" << std::endl;
             break;
-        case 12:
+        case gpaValue:
             std::cout << "Student GPA Not Less Than 4.0 (" << content << ")" << std::endl;
             break;
-        case 13:
-            std::cout << "A Carriage Return has been detected (Line: " << lineNumber << ").\n Testing is being performed on a unix-style system.\n "
-                         "Please convert the inputted file into a unix-style format, and re-run the program.\n The Program will now exit, as there are known incompatibilities with carriage returns on unix." << std::endl;
+        case carriageReturn:
+            std::cout << "A Carriage Return has been detected (Line: " << lineNumber << "). " << std::setw(27) <<"You are testing on a unix-style system.\n "<< std::setw(27) <<
+                      std::right << "" << "Please convert the inputted file into a unix-style format, and re-run the program.\n" << std::setw(27) << "" << " The Program will now exit, as there are known incompatibilities with carriage returns on unix." << std::endl;
             break;
-        case 14:
+        case numberFormat:
             std::cout << "Number Format: (" << content << ")" << std::endl;
             break;
         default: break;
