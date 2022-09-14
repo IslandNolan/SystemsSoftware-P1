@@ -35,7 +35,7 @@ void processInputFile(struct student hashTable[], string filename) {
     string s;
     int lineNum=0;
 
-    cout << setw(28) << std::left << "Status: " << std::left << setw(30) << "Action: " << endl
+    cout << setw(28) << std::left << "Placed At: " << std::left << setw(30) << "Action: " << endl
     << setw(28) << "-------------------------" << setw(50) << "------------------------------------------" << endl;
     while(getline(iss,s)){
         lineNum++;
