@@ -20,9 +20,7 @@ struct student {
 
 int computerHash(std::string input) {
     int sum=0;
-    for(char c : input){
-        sum+=c;
-    }
+    for(char c : input){ sum+=c; }
     return sum%TABLE_SIZE;
 }
 void printRecord(struct student temp,int index){
@@ -96,11 +94,17 @@ bool testEmailFormat(struct student temp) {
     else return true;
 }
 bool testStudentData(struct student hashTable[],struct student temp) {
+
     if(temp.name.size()<NAME_SIZE_MIN || temp.name.size()>NAME_SIZE_MAX){ displayError(nameLength,temp.name,temp.parsedAtLine); return false; }
+
+    //Check duplicates
     for(int i=0;i<TABLE_SIZE;i++){
-        if(temp.name==hashTable[i].name){
-            displayError(duplicateName,temp.name,temp.parsedAtLine);
-            return false;
+        if(temp.name==hashTable[i].name){ displayError(duplicateName,temp.name,temp.parsedAtLine); return false; }
+
+        struct student* pt = hashTable[i].next;
+        while(pt!=nullptr){
+            if(temp.name==pt->name){ displayError(duplicateName,temp.name,temp.parsedAtLine); return false; }
+            pt = pt->next;
         }
     }
 
