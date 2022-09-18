@@ -1,5 +1,7 @@
 #pragma once // Prevents the header file from loading multiple times
 
+//Not complete yet. Doing this Tomorrow.
+
 enum searchType {
     creditsEqual,
     creditsLess,

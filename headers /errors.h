@@ -1,8 +1,13 @@
-#pragma once // Prevents the header file from loading multiple times
+#pragma once
 #include <string>
 #include <iostream>
 #include <iomanip>
 
+
+/**
+ * Enumeration for the error type.
+ * We use the ordinal values here instead of manually defining them.
+ */
 enum error{
     missingArgs,
     fileNotFound,
@@ -19,6 +24,13 @@ enum error{
     carriageReturn,
     numberFormat
 };
+
+/**
+ * Display an error message based on the enumeration enum.
+ * @param error Type of Error.
+ * @param content Dependent on the implementation- Usually the problematic field.
+ * @param lineNumber The Line # of the file the error appeared on.
+ */
 void displayError(int error, std::string content, int lineNumber){
     std::string err = "Error: (Line: "+std::to_string(lineNumber)+")  ";
     std::cout << std::left << std::setw(28) << err;
