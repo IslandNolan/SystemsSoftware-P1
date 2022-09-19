@@ -104,7 +104,7 @@ void processSearchFile(struct student hashTable[], string fileName) {
  */
 int main(int argc, char* argv[]) {
 
-    if(argc<2) { displayError(missingArgs,"No File Provided",-1); }
+    if(argc<2) { displayError(missingArgs,"No File Provided",-1); exit(0); }
 
     auto* table = (student*) calloc(TABLE_SIZE,sizeof(struct student));
     processInputFile(table,argv[1]);
