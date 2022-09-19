@@ -49,7 +49,7 @@ void processInputFile(struct student hashTable[], const string& fileName) {
     cout << endl << endl;
 
     ifstream ifs(fileName);
-    if(!ifs.is_open()) { displayError(fileNotFound,fileName,stoi("0")); exit(1); }
+    if(!ifs.is_open()) { displayError(fileNotFound,fileName,stoi("0")); exit(0); }
     cout << "Using Data From File: "+string(fileName) << endl;
     string s;
     int lineNum=0;
@@ -60,7 +60,7 @@ void processInputFile(struct student hashTable[], const string& fileName) {
         lineNum++;
 
         //Test Record for Carriage Returns if running on Unix.
-        if(!WIN && s.find('\r')!=string::npos) { displayError(carriageReturn,"",lineNum); exit(1); }
+        if(!WIN && s.find('\r')!=string::npos) { displayError(carriageReturn,"",lineNum); exit(0); }
 
         //Check Record Validity and Format, then construct student. If record is not valid, then skip and continue.
         if(s.size()>=3 && s.size()<35) { displayError(shortRecord,s,lineNum); continue; }
@@ -81,7 +81,7 @@ void processInputFile(struct student hashTable[], const string& fileName) {
 void processSearchFile(struct student hashTable[], string fileName) {
     std::cout << std::endl;
     ifstream ifs(fileName);
-    if(!ifs.is_open()) { displayError(fileNotFound,fileName,stoi("0")); exit(1); }
+    if(!ifs.is_open()) { displayError(fileNotFound,fileName,stoi("0")); exit(0); }
     string currentLine;
     int lineNum=0;
     std::cout << "Processing Search File: " + fileName << std::endl;
