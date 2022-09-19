@@ -15,6 +15,12 @@ enum searchEnum {
     number,
     numberContains
 };
+
+/**
+ * Search Object to help facilitate extra organization.
+ * This was done this way in order to provide an easy way to expand
+ * it's functionality at a later date (Project 2+ ?)
+ */
 struct search {
     searchEnum type;
     std::string text;
@@ -51,6 +57,12 @@ struct search {
         }
     }
 };
+
+/**
+ * Construct a new Search Object
+ * @param search String of Text to parse for each record.
+ * @return
+ */
 search createSearch(std::string search){
     std::istringstream iss(search);
     std::string type, text;
@@ -103,6 +115,12 @@ search createSearch(std::string search){
     return search1;
 }
 
+/**
+ * Performs a particular search and checks every student for qualifying criteria.
+ * If it matches, then the record is printed.
+ * @param hashtable
+ * @param search
+ */
 void performSearch(struct student hashtable[], std::string search) {
     struct search s = createSearch(search);
     for(int i=0;i<TABLE_SIZE;i++){
