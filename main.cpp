@@ -72,24 +72,22 @@ void processInputFile(struct student hashTable[], string fileName) {
         } else { continue; }
     }
 
-    ifs.close();
     displayHashTable(hashTable);
     cout << "-----------------------------------------------------------------------" << endl;
 }
+
 void processSearchFile(struct student hashTable[], string filename) {
     std::cout << std::endl;
     ifstream ifs(filename);
     string currentLine;
     int lineNum=0;
-
+    std::cout << "Processing Search File: "+filename << std::endl;
     while(getline(ifs,currentLine)){
         if(!WIN && currentLine.find('\r')!=string::npos) { cout<<"Could not read file, Line: "+to_string(lineNum)+" contains a Carriage Return Value.. "<< endl; exit(1); }
         performSearch(hashTable,currentLine);
         lineNum++;
     }
 
-
-    ifs.close();
 }
 
 /**
@@ -107,12 +105,10 @@ int main(int argc, char* argv[]) {
 
     cout << "Using Data From File: "+string(argv[1]) << endl;
 
-    //calloc the array here instead of initializing to NULL.
     auto* table = (student*) calloc(TABLE_SIZE,sizeof(struct student));
     processInputFile(table,argv[1]);
 
     if(argc>2) {
-        cout << endl << "Using Search File: "+string(argv[2]) << endl;
         processSearchFile(table,argv[2]);
     }
     return 0;

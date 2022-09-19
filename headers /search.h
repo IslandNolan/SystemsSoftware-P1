@@ -41,8 +41,12 @@ struct search {
                 return st.name==text;
             case firstName:
                 return st.name.substr(0,text.size())==text;
-            case lastName:
-                return st.name.substr(st.name.size()-text.size())==text;
+            case lastName: {
+                reverse(st.name.begin(), st.name.end());
+                bool accept = st.name.substr(0, text.size()) == text;
+                reverse(st.name.begin(), st.name.end());
+                return accept;
+            }
             case gpaEqual:
                 return stod(std::to_string(st.gpa))==stod(text);
             case gpaLess:
