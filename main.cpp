@@ -1,7 +1,7 @@
 #include "headers /headers.h"
 
 /*
- * Pre-Processor Directive to Identify a windows operating environment.
+ * Pre-Processor Directive to Identify a Windows operating environment.
  * This is important because a check for carriage returns relies on it.
  */
 #ifdef _WIN32
@@ -48,13 +48,13 @@ struct student* createStudent(const string& record,int line) {
 void processInputFile(struct student hashTable[], string fileName) {
     cout << endl << endl;
 
-    ifstream iss(fileName);
+    ifstream ifs(fileName);
     string s;
     int lineNum=0;
 
-    cout << setw(28) << std::left << "Placed At: " << std::left << setw(30) << "Action: " << endl
+    cout << setw(28) << std::left << "Result/Location: " << std::left << setw(30) << "Description: " << endl
     << setw(28) << "-------------------------" << setw(50) << "------------------------------------------" << endl;
-    while(getline(iss,s)){
+    while(getline(ifs,s)){
         lineNum++;
 
         //Test Record for Carriage Returns if running on Unix.
@@ -71,11 +71,25 @@ void processInputFile(struct student hashTable[], string fileName) {
             insertStudent(hashTable, st);
         } else { continue; }
     }
+
+    ifs.close();
     displayHashTable(hashTable);
     cout << "-----------------------------------------------------------------------" << endl;
 }
 void processSearchFile(struct student hashTable[], string filename) {
-    cout << endl << "Do Search Stuff Here" << endl;
+    std::cout << std::endl;
+    ifstream ifs(filename);
+    string currentLine;
+    int lineNum=0;
+
+    while(getline(ifs,currentLine)){
+        if(!WIN && currentLine.find('\r')!=string::npos) { cout<<"Could not read file, Line: "+to_string(lineNum)+" contains a Carriage Return Value.. "<< endl; exit(1); }
+        performSearch(hashTable,currentLine);
+        lineNum++;
+    }
+
+
+    ifs.close();
 }
 
 /**

@@ -51,7 +51,7 @@ int computerHash(std::string input) {
  */
 void printRecord(struct student st, int index){
     bool emptyRecord = st.name.empty();
-    std::cout << std::setw(5) << std::right << ((st.isChained) ? "|" : std::to_string(index))
+    std::cout << std::setw(5) << std::right << ((st.isChained || index==-1) ? "|" : std::to_string(index))
               << "  " << std::setw(20) << std::left << (emptyRecord? "-": st.name)
               << "  " << std::setw(9) << std::left << (emptyRecord? "-": st.number)
               << "  " << std::setw(17) << std::left << (emptyRecord? "-": st.email)
