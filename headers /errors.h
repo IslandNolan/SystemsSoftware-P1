@@ -39,6 +39,7 @@ void displayError(int error, std::string content, int lineNumber){
             std::cout << content << std::endl;
             break;
         case fileNotFound:
+            std::cout << "File: " << content << " Not Found. Exiting.. " << std::endl;
             break;
         case blankRecord:
             std::cout << "Blank Record: ( --- )" << std::endl;

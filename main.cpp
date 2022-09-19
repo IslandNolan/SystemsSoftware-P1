@@ -49,6 +49,7 @@ void processInputFile(struct student hashTable[], string fileName) {
     cout << endl << endl;
 
     ifstream ifs(fileName);
+    if(!ifs.is_open()) { displayError(fileNotFound,fileName,stoi("0")); exit(1); }
     string s;
     int lineNum=0;
 
@@ -76,12 +77,13 @@ void processInputFile(struct student hashTable[], string fileName) {
     cout << "-----------------------------------------------------------------------" << endl;
 }
 
-void processSearchFile(struct student hashTable[], string filename) {
+void processSearchFile(struct student hashTable[], string fileName) {
     std::cout << std::endl;
-    ifstream ifs(filename);
+    ifstream ifs(fileName);
+    if(!ifs.is_open()) { displayError(fileNotFound,fileName,stoi("0")); exit(1); }
     string currentLine;
     int lineNum=0;
-    std::cout << "Processing Search File: "+filename << std::endl;
+    std::cout << "Processing Search File: " + fileName << std::endl;
     while(getline(ifs,currentLine)){
         if(!WIN && currentLine.find('\r')!=string::npos) { cout<<"Could not read file, Line: "+to_string(lineNum)+" contains a Carriage Return Value.. "<< endl; exit(1); }
         performSearch(hashTable,currentLine);
