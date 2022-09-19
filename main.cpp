@@ -45,11 +45,12 @@ struct student* createStudent(const string& record,int line) {
  * @param hashTable Table to place values into.
  * @param fileName Name of the file to parse.
  */
-void processInputFile(struct student hashTable[], string fileName) {
+void processInputFile(struct student hashTable[], const string& fileName) {
     cout << endl << endl;
 
     ifstream ifs(fileName);
     if(!ifs.is_open()) { displayError(fileNotFound,fileName,stoi("0")); exit(1); }
+    cout << "Using Data From File: "+string(fileName) << endl;
     string s;
     int lineNum=0;
 
@@ -104,8 +105,6 @@ void processSearchFile(struct student hashTable[], string fileName) {
 int main(int argc, char* argv[]) {
 
     if(argc<2) { displayError(missingArgs,"No File Provided",-1); }
-
-    cout << "Using Data From File: "+string(argv[1]) << endl;
 
     auto* table = (student*) calloc(TABLE_SIZE,sizeof(struct student));
     processInputFile(table,argv[1]);
