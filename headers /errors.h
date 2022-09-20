@@ -1,8 +1,4 @@
 #pragma once
-#include <string>
-#include <iostream>
-#include <iomanip>
-
 
 /**
  * Enumeration for the error type.
