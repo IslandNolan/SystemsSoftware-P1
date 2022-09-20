@@ -77,3 +77,10 @@ The Dependencies that are required:
 - GCC/G++ or Clang
 - A Toolchain of your Choice. Ninja is used in my version.
 
+
+To Compile, Use:
+
+- cmake .
+- make
+
+
