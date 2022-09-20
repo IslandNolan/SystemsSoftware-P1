@@ -71,16 +71,17 @@ You can either use GCC, or Cmake for compilation. Either of these will work.
 
 For Cmake: Navigate to the directory and run "make" from the CLI.
 
-The Dependencies that are required:
+Required Dependencies:
 
 - Cmake
-- GCC/G++ or Clang
-- A Toolchain of your Choice. Ninja is used in my version.
+- G++
 
 
-To Compile, Use:
+To Compile:
 
-- cmake .
-- make
+- Navigate to the root of the project, and run:
+- ```sudo cmake . && make```
 
+
+**You may need to clear the Cache for the previous build in order for this to successfully compile.**
 
